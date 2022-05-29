@@ -28,3 +28,4 @@
 | `void LoadLatGainScheduler(const LatControllerConf &lat_controller_conf)` |
 | `void LogInitParameters()` | 打印车辆基本结构参数，包括车身质量、轮距和转动惯量等 | 无 | 无 |
 | `void ProcessLogs(const SimpleLateralDebug *debug, const canbus::Chassis *chassis)` | 打印日志到文件 | 横向调试器【读】，车辆底盘状态【读】 | 无 |
+|
