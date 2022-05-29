@@ -27,6 +27,49 @@ table th:nth-of-type(3) {
 
 - 控制器配置 [`ControlConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/control_conf.proto) \
 包括控制器类别，测试相关参数以及控制器本身的一些参数（如控制周期、横纵向控制器参数配置、轨迹/车辆状态/位置周期相关参数等）
+    - 横向控制器配置 [`LatControllerConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/lat_controller_conf.proto)
+        - ts: 采样周期
+        - preview_window: 预览窗口
+        - **eps**: LQR求解器收敛阈值
+        - mean_filter_window_size: 均值滤波器窗口大小
+        - steer_mrac_conf: 模型参考自适应控制器配置
+        - ...
+    - 纵向控制器配置 [`LonControllerConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/lon_controller_conf.proto)
+        - ts: 采样周期
+        - break_minimum_action: 刹车最小深度
+        - throttle_minimum_action: 阀门最小开度
+        - speed_controller_input_limit: 速度控制器输入限制
+        - preview_window: 预览窗口
+        - standstill_acceleration: 静态加速度
+        - PID 配置 (**[`PidConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/pid_conf.proto)**)
+            - station_pid_conf: 位置瞄点PID配置
+            - low_low_speed_pid_conf: 低速状态PID配置
+            - high_low_speed_pid_conf: 高速状态PID配置
+            - reverse_station_pid_conf: 倒车位置瞄点PID配置
+            - reverse_speed_pid_conf: 倒车状态速度PID配置
+
+            其中 PID 配置类的定义如下：
+            ```
+            message PidConf {
+                optional bool integrator_enable = 1;                // 积分环节使能
+                optional double integrator_saturation_level = 2;    // 积分饱和阈值
+                optional double kp = 3;                             // 比例系数
+                optional double ki = 4;                             // 积分系数
+                optional double kd = 5;                             // 微分系数
+                optional double kaw = 6 [default = 0.0];            // 抗积分饱和系数 anti-windup
+                optional double output_saturation_level = 7;        // 输出饱和阈值（执行器饱和）
+            }
+            ```
+        - switch_speed: 高低速切换 
+        - pitch_angle_filter_conf: 俯仰角滤波器参数配置
+        - calibration_table: 校准表
+
+    - MPC控制器配置 [`MPCControllerConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/mpc_controller_conf.proto)
+        - 控制周期、角刚度、车身质量、收敛阈值等
+        - 均值滤波、横向加速度、静态加速度、刹车最小深度、阀门最大开度等与横纵向控制器定义相同
+        - matrix_q: 
+        - matrix_r: 
+        - max_iteration:
 
 - [`DependencyInjector`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/common/dependency_injector.h) \
 通过[`VehicleStateProvider`](https://github.com/ApolloAuto/apollo/blob/master/modules/common/vehicle_state/vehicle_state_provider.h)类获取车辆状态，[`VehicleStateProvider`](https://github.com/ApolloAuto/apollo/blob/master/modules/common/vehicle_state/vehicle_state_provider.h)类主要功能包括
