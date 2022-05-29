@@ -78,5 +78,14 @@ table th:nth-of-type(3) {
     - `message RSSInfo` 
 
 - 控制指令 [`control::ControlCommand`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/control_cmd.proto)
-
+    - **`message ControlCommand`** 定义控制指令，包括阀门开度、刹车、转向速率、速度、加速度等
+    其嵌套以下消息结构
+    - `enum TurnSignal` 定义转向信号
+    - `message LatencyStats` 定义延迟，包括总延迟、制器延迟等
+    - `message SimpleLongitudinalDebug` 纵向调试用
+    - `message SimpleLateralDebug` 横向调试用
+    - `message SimpleMPCDebug` MPC控制调试
+    - `message MracDebug` 模型参考自适应控制调试
+    - `message MracAdaptiveGain` MRAC增益
+    - `message Debug` 
 
