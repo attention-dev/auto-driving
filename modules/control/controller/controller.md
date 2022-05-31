@@ -67,9 +67,9 @@ table th:nth-of-type(3) {
     - MPC控制器配置 [`MPCControllerConf`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/proto/mpc_controller_conf.proto)
         - 控制周期、角刚度、车身质量、收敛阈值等
         - 均值滤波、横向加速度、静态加速度、刹车最小深度、阀门最大开度等与横纵向控制器定义相同
-        - matrix_q: 
-        - matrix_r: 
-        - max_iteration:
+        - **matrix_q**: 状态变量权值矩阵Q，状态量包括横向误差、横向误差率、航向误差、航向误差率、锚点误差和速度误差 (lateral_error, lateral_error_rate, heading_error, heading_error_rate, station_error, speed_error)
+        - **matrix_r**: 控制变量矩阵，控制变量包括方向盘转角和加速度 (steer, acceleration)
+        - max_iteration: LQR求解最大迭代次数
 
 - [`DependencyInjector`](https://github.com/ApolloAuto/apollo/blob/master/modules/control/common/dependency_injector.h) \
 通过[`VehicleStateProvider`](https://github.com/ApolloAuto/apollo/blob/master/modules/common/vehicle_state/vehicle_state_provider.h)类获取车辆状态，[`VehicleStateProvider`](https://github.com/ApolloAuto/apollo/blob/master/modules/common/vehicle_state/vehicle_state_provider.h)类主要功能包括

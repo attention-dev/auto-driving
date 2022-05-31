@@ -29,3 +29,16 @@
 | `void LogInitParameters()` | 打印车辆基本结构参数，包括车身质量、轮距和转动惯量等 | 无 | 无 |
 | `void ProcessLogs(const SimpleLateralDebug *debug, const canbus::Chassis *chassis)` | 打印日志到文件 | 横向调试器【读】，车辆底盘状态【读】 | 无 |
 |
+
+## LQR 控制器
+- 状态：横向误差，横向误差率，航向误差，航向误差率 (lateral error, lateral error rate, heading error, heading error rate)
+- 系统矩阵、增益矩阵和权值矩阵
+    - 系统矩阵
+        - matrix_a_: 状态矩阵
+        - matrix_ad_: 离散状态矩阵
+        - matrix_adc_: 
+        - matrix_b_:
+        - matrix_bd_:
+        - matrix_bdc_:
+    - 增益矩阵
+    - 权值矩阵
