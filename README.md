@@ -24,3 +24,12 @@ autonomous driving learning notes
 - [pcl](https://pointclouds.org/) 点云算法库
 - [ros](https://www.ros.org/)
 - [tf2](https://github.com/ApolloAuto/apollo/tree/master/third_party/tf2) ROS tf2 坐标系转换库
+
+
+## Reference
+- https://cloud.tencent.com/developer/article/1418705
+- https://blog.csdn.net/adamshan/article/details/80555174
+- https://blog.csdn.net/AgingMoon/article/details/110311171
+- https://blog.csdn.net/weixin_37395438/article/details/112973098
+- https://adamshan.blog.csdn.net/article/details/80779615
+- https://blog.csdn.net/robinvista/article/details/111400051
